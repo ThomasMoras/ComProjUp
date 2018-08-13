@@ -5,26 +5,23 @@
 
         <div class="row">
             <legend style="text-align: center; font-size: 25px">Filtre utilisateur</legend>
-            <form class="form-horizontal col-md-8 col-md-offset-2" role="form" enctype="multipart/form-data" method="POST" action="{!! url('filter') !!}" accept-charset="UTF-8">
+            <form class="form-horizontal col-md-8 col-md-offset-2" role="form" enctype="multipart/form-data" method="POST" action="{!! url('home') !!}" accept-charset="UTF-8">
                 {!! csrf_field() !!}
-                <fieldset>
                     {{--<label class="col-4 control-label" for="textinput">Domaine</label>--}}
-                    <div class="col-12">
-                            <select name="domaine" id="domaine" class="form-control">
-                                @foreach ($domaines as $domaine)
+                    <div class="col-4">
+
+                        <select name="domaine" id="domaine" class="form-control">
+                            <option value ="">Aucun critère</option>
+                            @foreach ($domaines as $domaine)
                                 <option value ="{{$domaine->id}}">{{$domaine->nom}}</option>
                             @endforeach
                         </select>
                     </div>
-                </fieldset>
-                {{--<div class="form-group" style="margin-top: 2%">--}}
-                    {{--<div class="col-offset-2 col-10">--}}
-                        {{--<div class="pull-right">--}}
-                            {{--<button type="submit" class="btn btn-primary">Envoie</button>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
+                <div class="pull-right">
+                    <button type="submit" class="btn btn-primary">Envoie</button>
+                </div>
             </form>
+
         </div>
         <div class="row">
             <div class="col-md-8 col-md-offset-2">

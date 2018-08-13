@@ -3,8 +3,7 @@
 @section('content')
 
     <div class="row">
-        <div class="col-3"> </div>
-        <form class="form-horizontal col-6 box" role="form" method="POST" action="{!! url('search') !!}" accept-charset="UTF-8">
+        <form class="form-horizontal col-sm-8 box" role="form" method="POST" action="{!! url('search') !!}" accept-charset="UTF-8" style="margin-left: 27%">
             {!! csrf_field() !!}
             <fieldset>
 

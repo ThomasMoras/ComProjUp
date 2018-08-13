@@ -3,17 +3,17 @@
 @section('content')
 
     <div class="row">
-        <div class="col-4"> </div>
 
-        <form class="form-horizontal col-6 box" role="form" enctype="multipart/form-data" method="POST" action="{!! url('profil') !!}" accept-charset="UTF-8">
+        <form class="form-horizontal col-sm-10 box" role="form" enctype="multipart/form-data" method="POST" action="{!! url('profil') !!}" accept-charset="UTF-8">
             {!! csrf_field() !!}
             <fieldset>
 
                 <!-- Form Name -->
-                <legend style="text-align: center; font-size: 25px">Modification des informations</legend>
+                <legend style="text-align: center; font-size: 165%; font-weight: bold;">Modification des informations</legend>
+
                 <!-- Text input-->
                 @if($utilisateur->image != null)
-                <img src="/images/{{ $utilisateur->image }}" style="max-width: 400px; max-height: 200px">
+                    <img src="/images/{{ $utilisateur->image }}" style="max-width: 400px; max-height: 200px">
                 @endif
                 <div class="row">
 
@@ -58,14 +58,14 @@
                                             <option selected value="">Vide</option>
                                         @endif
                                         @foreach ($domaines as $domaine)
-                                                @if($utilisateur->domaine != null)
-                                                    @if($domaine->id != $utilisateur->domaine->id)
-                                                        <option value ="{{$domaine->id}}">{{$domaine->nom}}</option>
-                                                    @endif
-                                                @endif
-                                                @if($utilisateur->domaine == null)
+                                            @if($utilisateur->domaine != null)
+                                                @if($domaine->id != $utilisateur->domaine->id)
                                                     <option value ="{{$domaine->id}}">{{$domaine->nom}}</option>
                                                 @endif
+                                            @endif
+                                            @if($utilisateur->domaine == null)
+                                                <option value ="{{$domaine->id}}">{{$domaine->nom}}</option>
+                                            @endif
                                         @endforeach
                                     @endif
                                 </select>
@@ -82,7 +82,7 @@
                                 <select name="contrat" id="contrat" class="form-control">
                                     @if($contrats->count() > 0)
                                         @if($utilisateur->contrat != null)
-                                        <option selected value="{{$utilisateur->contrat->id}}">{{$utilisateur->contrat->nom}}</option>
+                                            <option selected value="{{$utilisateur->contrat->id}}">{{$utilisateur->contrat->nom}}</option>
                                         @else
                                             <option selected value="">Vide</option>
                                         @endif
@@ -92,9 +92,9 @@
                                                     <option value ="{{$contrat->id}}">{{$contrat->nom}}</option>
                                                 @endif
                                             @endif
-                                             @if($utilisateur->contrat == null)
-                                                     <option value ="{{$contrat->id}}">{{$contrat->nom}}</option>
-                                             @endif
+                                            @if($utilisateur->contrat == null)
+                                                <option value ="{{$contrat->id}}">{{$contrat->nom}}</option>
+                                            @endif
                                         @endforeach
                                     @endif
                                 </select>
@@ -126,7 +126,7 @@
                     <div class="row">
                         <label class="col-2 control-label" for="textinput">Description</label>
                         <div class="col-10">
-                        <textarea name="description" type="text" class="form-control" id="description" value="{{$utilisateur->description}}">{{$utilisateur->description}}</textarea>
+                            <textarea name="description" type="text" class="form-control" id="description" value="{{$utilisateur->description}}">{{$utilisateur->description}}</textarea>
                         </div>
                     </div>
                 </div>
@@ -153,4 +153,41 @@
     </div><!-- /.col-lg-12 -->
 
     </div><!-- /.row -->
+@endsection
+
+@section('projects')
+    <section>
+        <div class="row">
+            {{--<form class="form-horizontal col-12 box" role="form" enctype="multipart/form-data" method="POST" action="{!! url('profil') !!}" accept-charset="UTF-8">--}}
+            {{--<fieldset>--}}
+
+            {{--<!-- Form Name -->--}}
+            {{--<legend style="text-align: center; font-size: 25px">Mes projets</legend>--}}
+            <div class="col-12 box">
+                <h2 class="align-center">
+                    Mes projets
+                </h2>
+                <div class="form-group" style="margin-top: 2%">
+                    <div class="col-offset-2 col-10">
+                        <div class="align-center">
+                            {{--<button type="submit" class="btn btn-primary">Créer un nouveau projet</button>--}}
+                            @if($projects != null)
+                                @foreach ($projects as $project)
+                                    <div class="box">
+                                        <p>{{$project->domaine->nom}} : {{$project->titre}} </p>
+                                    </div>
+                                @endforeach
+                            @endif
+                            <button class="btn btn-primary"><a href="{{ route('project_create') }}">Créer un nouveau projet</a></button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            {{--</fieldset>--}}
+            {{--</form>--}}
+        </div>
+    </section>
 @endsection

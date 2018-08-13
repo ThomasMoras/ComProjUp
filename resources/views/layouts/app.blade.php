@@ -6,17 +6,41 @@
 
         <!-- Header -->
         <header id="header">
+
             @if(Auth::check())
                 <h1><a href="/home">KiproMeet</a></h1>
             @else
                 <h1><a href="/">KiproMeet</a></h1>
             @endif
             <nav class="links">
+
                 <ul>
                     @if(Auth::check())
                         <li ><a href="{{ route('profil') }}">Profile</a></li>
-                        <li ><a href="{{ route('search') }}">Recherche</a></li>
+                        <li ><a href="{{ route('search') }}">Recherche membres</a></li>
+                        <li ><a href="{{ route('search-project') }}">Recherche projets</a></li>
                         <li ><a href="{{ route('conversations') }}">Conversation</a></li>
+
+                        {{--<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">--}}
+                        {{--<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>--}}
+                        {{--<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>--}}
+                        {{--<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>--}}
+                        {{--<li role="presentation" class="divider"></li>--}}
+                        {{--<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>--}}
+                        {{--</ul>--}}
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu3">
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Regular link</a></li>
+                            <li role="presentation" class="disabled"><a role="menuitem" tabindex="-1" href="#">Disabled link</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another link</a></li>
+                        </ul>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+
                     @endif
                     @if (Auth::guest())
                         <li><a href="{{ route('login') }}">Login</a></li>
@@ -88,20 +112,50 @@
         </section>
 
         {{--@if(View::hasSection('sideform'))--}}
-            {{--<div class="col-sm-4" style="width: 40%;">--}}
-                {{--@yield('sideform')--}}
-            {{--</div>--}}
+        {{--<div class="col-sm-4" style="width: 40%;">--}}
+        {{--@yield('sideform')--}}
+        {{--</div>--}}
         {{--@endif--}}
 
-        <div id="main" class="col-sm-4">
-            @yield('content')
+        {{--class="" style="width: 40%;"--}}
+
+
+
+
+        <div id="main" class="">
+            <div>
+                @yield('content')
+            </div>
+
+            @if(View::hasSection('projects'))
+                <div style="width: 60%; margin-right: 5%">
+                    @yield('projects')
+                </div>
+            @endif
+
+
+
         </div>
 
-        <div class="col-sm-4">
-            @yield('sidebar')
-        </div>
+        @if(View::hasSection('sidebar'))
+            <div class="">
+                @yield('sidebar')
+            </div>
+        @endif
 
 
+
+        {{--<div class="row">--}}
+        {{--@if(View::hasSection('projects'))--}}
+        {{--@yield('projects')--}}
+        {{--@endif--}}
+        {{--@yield('content')--}}
+        {{--@if(View::hasSection('sidebar'))--}}
+        {{--@yield('sidebar')--}}
+        {{--@endif--}}
+        {{--</div>--}}
+
+        {{--@yield('content')--}}
 
     </div>
 @endsection
