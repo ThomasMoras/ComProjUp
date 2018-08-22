@@ -45,7 +45,24 @@ Route::post('/conversations/{user}', 'ConversationsController@store')->name('con
 
 Route::get('/search-project', 'SearchProjectController@index')->name('search-project');
 
-Route::get('/project_create', 'ProjectController@init')->name('project_create');
-Route::post('/project_create', 'ProjectController@create')->name('project_create');
+Route::get('/project', 'ProjectController@init')->name('project.init');
+Route::get('/project/{project}', 'ProjectController@modify')->name('project.modify');
+Route::post('/project/create', 'ProjectController@create')->name('project.create');
+
+Route::post('/project/update/{project}', 'ProjectController@update')->name('project.update');
+
+//Route::post('/project/update/{id}', function ($id) {
+//
+//    return 'Project '.$id;
+//});
+
+//
+//Route::get('project_create/{id?}', function ($id = null) {
+//    return $id;
+//});
+//
+//Route::get('user/{id?}', function ($id = 0) {
+//    return $id;
+//});
 
 //Route::get('/project', 'ProjectController@modify')->name('project');

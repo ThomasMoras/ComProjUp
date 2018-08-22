@@ -6,7 +6,7 @@ namespace projetPhp\Http\Controllers;
 use App\Http\Requests\StoreMessageRequest;
 use Carbon\Carbon;
 use projetPhp\Message;
-use projetPhp\Repository\ConversationRepository;
+//use projetPhp\Repository\ConversationRepository;
 use projetPhp\User;
 use Illuminate\Auth\AuthManager;
 use Illuminate\Http\Request;

@@ -173,12 +173,30 @@
                             {{--<button type="submit" class="btn btn-primary">Créer un nouveau projet</button>--}}
                             @if($projects != null)
                                 @foreach ($projects as $project)
-                                    <div class="box">
-                                        <p>{{$project->domaine->nom}} : {{$project->titre}} </p>
-                                    </div>
+                                    @if($project->user_id == $utilisateur->id)
+                                        <a href="{{ route('project.modify',$project) }}">
+                                            <div class="box">
+                                                <div class="row">
+                                                    <div style="width: 100%">
+                                                        <h3 style="">{{$project->domaine->nom}} : {{$project->titre}} </h3>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    @else
+                                        <a href="{{ route('profil') }}">
+                                            <div class="box">
+                                                <div class="row">
+                                                    <div style="width: 100%">
+                                                        <h3 style="">{{$project->domaine->nom}} : {{$project->titre}} </h3>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    @endif
                                 @endforeach
                             @endif
-                            <button class="btn btn-primary"><a href="{{ route('project_create') }}">Créer un nouveau projet</a></button>
+                            <button class="btn btn-primary"><a href="{{ route('project.init') }}">Créer un nouveau projet</a></button>
 
                         </div>
                     </div>

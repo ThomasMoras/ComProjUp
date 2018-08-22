@@ -28,18 +28,18 @@
                         {{--<li role="presentation" class="divider"></li>--}}
                         {{--<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>--}}
                         {{--</ul>--}}
-                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu3">
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Regular link</a></li>
-                            <li role="presentation" class="disabled"><a role="menuitem" tabindex="-1" href="#">Disabled link</a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another link</a></li>
-                        </ul>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#">Separated link</a></li>
-                        </ul>
+                        {{--<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu3">--}}
+                            {{--<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Regular link</a></li>--}}
+                            {{--<li role="presentation" class="disabled"><a role="menuitem" tabindex="-1" href="#">Disabled link</a></li>--}}
+                            {{--<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another link</a></li>--}}
+                        {{--</ul>--}}
+                        {{--<ul class="dropdown-menu" role="menu">--}}
+                            {{--<li><a href="#">Action</a></li>--}}
+                            {{--<li><a href="#">Another action</a></li>--}}
+                            {{--<li><a href="#">Something else here</a></li>--}}
+                            {{--<li class="divider"></li>--}}
+                            {{--<li><a href="#">Separated link</a></li>--}}
+                        {{--</ul>--}}
 
                     @endif
                     @if (Auth::guest())
