@@ -19,9 +19,12 @@
                                 <legend style="text-align: center; font-size: 165%; font-weight: bold;">Modification du projet</legend>
                             @endif
                         <!-- Text input-->
-                            @if($my_proj->image != null)
-                                <img src="/images/{{ $my_proj->image }}" style="max-width: 400px; max-height: 200px">
-                            @endif
+                            <div class="align-center" style="margin-top: 2%">
+                                @if($my_proj->image != null)
+                                    <img src="/images/{{ $my_proj->image }}" style="max-width: 400px; max-height: 200px">
+                                @endif
+                            </div>
+
 
                             <div class="row" style="margin-top: 3%;margin-left: 3%">
 
@@ -62,13 +65,11 @@
                                 </div>
                                 <div class="col-sm-4" style="margin-left: 5%">
                                     <div class="form-check">
-                                        <input type="checkbox" class="form-check-input" name ="professionnel" id="professionnel" value="{{$my_proj->professionnel}}" {{$my_proj->professionnel ? ' checked="checked"' : '' }}>
-                                        {{--<input type="checkbox" name="professionnel" value="{{$my_proj->professionne}}" {{$my_proj->professionnel ? ' checked="checked"' : '' }}>--}}
-
+                                            <input type="checkbox" class="form-check-input" name ="professionnel" id="professionnel"
+                                                    {{ $my_proj->professionnel == 1  ? 'checked' : '' }}>
                                         <label class="form-check-label" for="professionnel">Projet professionel</label>
                                     </div>
                                 </div>
-                                {{$my_proj->professionnel}}
                             </div>
 
                             <div class="form-group" style="margin-top: 2%">

@@ -10,12 +10,14 @@ use projetPhp\User;
 class SearchController extends Controller
 {
     private $user;
+    private $auth;
+
     public function index()
     {
         $domaines = Domaine::orderBy('nom', 'ASC')->get();
         $contrats = Contrat::orderBy('nom', 'ASC')->get();
         $users =  array();
-        return view('search',['domaines' => $domaines, 'contrats' => $contrats, 'users' => $users ]);
+        return view('search',['domaines' => $domaines, 'contrats' => $contrats, 'users' => $users]);
     }
 
     public function create(Request $request)
@@ -58,6 +60,9 @@ class SearchController extends Controller
         }
         $domaines = Domaine::all();
         $contrats = Contrat::all();
-        return view('search',['domaines' => $domaines, 'contrats' => $contrats, 'users' => $this->user ]);
+
+        $auth = auth()->user();
+
+        return view('search',['domaines' => $domaines, 'contrats' => $contrats, 'users' => $this->user, 'auth' => $auth]);
     }
 }

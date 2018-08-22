@@ -175,13 +175,20 @@
                                 @foreach ($projects as $project)
                                     @if($project->user_id == $utilisateur->id)
                                         <a href="{{ route('project.modify',$project) }}">
-                                            <div class="box">
+                                            <div class="box"
+                                            @if($project->professionnel == 1)
+                                                style="background: sandybrown"
+                                            @endif
+                                            >
                                                 <div class="row">
                                                     <div style="width: 100%">
-                                                        <h3 style="">{{$project->domaine->nom}} : {{$project->titre}} </h3>
+                                                        <h3 style="">{{$project->domaine->nom}} : {{$project->titre}}
+                                                        </h3>
+
                                                     </div>
                                                 </div>
                                             </div>
+
                                         </a>
                                     @else
                                         <a href="{{ route('profil') }}">

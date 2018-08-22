@@ -36,7 +36,7 @@ class ProjectController extends Controller
 
     public function update(Request $request, Project $project)
     {
-        dd($request);
+//        dd($request);
 
         $project->titre =$request->input('titre');
         $project->description =$request->input('description');
@@ -51,6 +51,18 @@ class ProjectController extends Controller
         $project->professionnel = $bool;
 
 //        dd($project);
+        if($request->file() != null) {
+
+            $this->validate($request, [
+                'image_file' => 'required|image|mimes:jpeg,png,jpg,gif',
+            ]);
+
+            $imageName = time().'.'.$request->image_file->getClientOriginalExtension();
+            $request->image_file->move(public_path('images'), $imageName);
+
+            $project->image = $imageName;
+        }
+
         $project->save();
 
         return redirect()->route('profil');

@@ -74,27 +74,35 @@
                     <th scope="col">Compétences</th>
                     <th scope="col">Contrat</th>
                     <th scope="col">Département</th>
+                    <th scope="col">Profile</th>
                 </tr>
                 </thead>
                 <tbody>
                 @if($users->count() > 0)
                     @foreach ($users as $user)
-                        <tr>
-                            <td>{{$user->name}}</td>
-                            <td>{{$user->prenom}}</td>
-                            @if($user->domaine != null)
-                                <td>{{$user->domaine->nom}}</td>
-                            @else
-                                <td>Abscence de valeur</td>
-                            @endif
-                            <td>{{$user->competence}}</td>
-                            @if($user->contrat != null)
-                                <td>{{$user->contrat->nom}}</td>
-                            @else
-                                <td>Abscence de valeur</td>
-                            @endif
-                            <td>{{$user->departement}}</td>
-                        </tr>
+                        @if($user->id != $auth->id)
+                            <tr>
+                                <td>{{$user->name}}</td>
+                                <td>{{$user->prenom}}</td>
+                                @if($user->domaine != null)
+                                    <td>{{$user->domaine->nom}}</td>
+                                @else
+                                    <td>Abscence de valeur</td>
+                                @endif
+                                <td>{{$user->competence}}</td>
+                                @if($user->contrat != null)
+                                    <td>{{$user->contrat->nom}}</td>
+                                @else
+                                    <td>Abscence de valeur</td>
+                                @endif
+                                <td>{{$user->departement}}</td>
+                                <td>
+                                    <ul class="icons">
+                                        <li><a href="#" class="fa-eye"><span class="label">Twitter</span></a></li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        @endif
                     @endforeach
                 @endif
                 </tbody>
