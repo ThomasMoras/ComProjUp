@@ -2,7 +2,9 @@
 
 @section('content')
     <div class="container">
-            <div class="row">
+        <h2 class="align-center"> Mes contacts </h2>
+
+        <div class="row">
                 @foreach($users as $user)
                 <div class="col-md-4">
                     <div class="thumbnail">
@@ -14,7 +16,7 @@
                                 @else
                                     Aucune image pour le moment<br>
                                 @endif
-                                <a href="{{ route('conversations.show', $user->id) }}" class="card-link">Contact</a>
+                                <a href="{{ route('conversations.show', $user->id) }}" class="card-link">Contacter</a>
                             </div>
                         </div>
                     </div>

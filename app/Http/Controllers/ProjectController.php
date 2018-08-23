@@ -12,10 +12,10 @@ use projetPhp\Contrat;
 use projetPhp\Domaine;
 use projetPhp\Project;
 use Illuminate\Http\Request;
+use projetPhp\User;
 
 class ProjectController extends Controller
 {
-    private $user;
     public function init()
     {
         $user = auth()->user();
@@ -24,6 +24,13 @@ class ProjectController extends Controller
         $my_proj = new Project();
 
         return view('project',['utilisateur' => $user, 'domaines' => $domaines, 'contrats' => $contrats, 'my_proj' => $my_proj]);
+    }
+
+    public function view(Project $project)
+    {
+        $user = User::where('id','=',$project->user_id);
+
+        return view('view-project',['user' => $user, 'project' => $project]);
     }
 
     public function modify(Project $project)

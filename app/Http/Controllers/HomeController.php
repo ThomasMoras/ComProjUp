@@ -41,10 +41,6 @@ class HomeController extends Controller
             $users = User::where([$query_do])
                 ->get();
 
-//            $users = DB::table('users')
-//                ->where('domaine_id', '=', $request->input('domaine'))
-//                ->get();
-//            echo($users);
         }
         else {
             $users = User::orderBy('created_at', 'DESC')->get();
@@ -52,7 +48,7 @@ class HomeController extends Controller
 
         $domaine = Domaine::where([['id', '=',  $request->input('domaine')]])->get();
         $domaines = Domaine::orderBy('nom', 'ASC')->get();
-//        $domaines->prepend($domaine.id,$domaine.nom);
+
         return view('home',['utilisateurs' => $users, 'current_user' => $user, 'domaines' => $domaines, 'domaine' => $domaine]);
     }
 }

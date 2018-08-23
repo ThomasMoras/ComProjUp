@@ -8,6 +8,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="stylesheet" href="../assets/css/mainm.css" />
+    <link rel="stylesheet" href="../../assets/css/mainm.css" />
+
 </head>
 <body class="is-preload">
 <header id="header">

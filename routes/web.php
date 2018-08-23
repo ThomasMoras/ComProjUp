@@ -34,6 +34,7 @@ Route::post('/home', 'HomeController@filter')->name('home');
 
 Route::get('/profil', 'ProfilController@index')->name('profil');
 Route::post('/profil', 'ProfilController@create')->name('profil');
+Route::get('/profil/{user}', 'ProfilController@view')->name('profil.view');
 
 Route::get('/search', 'SearchController@index')->name('search');
 Route::post('/search', 'SearchController@create')->name('search');
@@ -48,8 +49,11 @@ Route::get('/search-project', 'SearchProjectController@index')->name('search-pro
 Route::get('/project', 'ProjectController@init')->name('project.init');
 Route::get('/project/{project}', 'ProjectController@modify')->name('project.modify');
 Route::post('/project/create', 'ProjectController@create')->name('project.create');
-
 Route::post('/project/update/{project}', 'ProjectController@update')->name('project.update');
+
+Route::get('/project/show/{project}', 'ProjectController@view')->name('project.view');
+
+
 
 //Route::post('/project/update/{id}', function ($id) {
 //

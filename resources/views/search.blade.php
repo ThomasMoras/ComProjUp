@@ -98,7 +98,7 @@
                                 <td>{{$user->departement}}</td>
                                 <td>
                                     <ul class="icons">
-                                        <li><a href="#" class="fa-eye"><span class="label">Twitter</span></a></li>
+                                        <li><a href="{{ route('profil.view', $user) }}" class="fa-eye"><span class="label">Profile</span></a></li>
                                     </ul>
                                 </td>
                             </tr>

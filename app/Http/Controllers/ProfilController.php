@@ -5,6 +5,7 @@ namespace projetPhp\Http\Controllers;
 use projetPhp\Contrat;
 use projetPhp\Domaine;
 use Illuminate\Http\Request;
+use projetPhp\User;
 use projetPhp\Project;
 
 class ProfilController extends Controller
@@ -20,9 +21,16 @@ class ProfilController extends Controller
         $domaines = Domaine::orderBy('nom', 'ASC')->get();
         $contrats = Contrat::orderBy('nom', 'ASC')->get();
         $projects = Project::where('user_id', '=',$user->id)->orderBy('created_at')->get();
-//        $projects = Project::orderBy('created_at', 'ASC')->get();
 
         return view('profil',['utilisateur' => $user, 'domaines' => $domaines, 'contrats' => $contrats, 'projects' => $projects]);
+    }
+
+
+    public function view(User $user)
+    {
+        $projects = Project::where('user_id', '=',$user->id)->orderBy('created_at')->get();
+
+        return view('view-profil',['user' => $user, 'create_projects' => $projects]);
     }
 
     public function create(Request $request)

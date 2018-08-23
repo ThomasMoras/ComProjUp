@@ -4,7 +4,6 @@
     <div class="container">
         <div class="row">
 
-
             <div class="col-md-3">
                 <div class="list-group">
                     @foreach($users as $user)
@@ -14,7 +13,6 @@
                     @endforeach
                 </div>
             </div>
-
 
 
             <div class="col-md-9">

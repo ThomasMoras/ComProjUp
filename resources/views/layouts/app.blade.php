@@ -123,6 +123,8 @@
 
 
         <div id="main" class="">
+
+
             <div>
                 @yield('content')
             </div>
@@ -133,8 +135,6 @@
                 </div>
             @endif
 
-
-
         </div>
 
         @if(View::hasSection('sidebar'))
@@ -143,6 +143,11 @@
             </div>
         @endif
 
+        @if(View::hasSection('team'))
+            <div style="width: 35%">
+                @yield('team')
+            </div>
+        @endif
 
 
         {{--<div class="row">--}}
