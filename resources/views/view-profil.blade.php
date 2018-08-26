@@ -50,6 +50,7 @@
         </div>
 
         <div>
+            @if($create_projects->count() > 0)
             <table class="table table-striped">
                 <thead>
                 <tr>
@@ -61,7 +62,6 @@
                 </tr>
                 </thead>
                 <tbody>
-                @if($create_projects->count() > 0)
                     @foreach($create_projects as $project)
                         <tr>
                             <td>{{$project->titre}}</td>
@@ -75,9 +75,14 @@
                             </td>
                         </tr>
                     @endforeach
-                @endif
                 </tbody>
             </table>
+            @else
+                <div>
+                    <p>Vide</p>
+                </div>
+            @endif
+
             {{--@foreach($create_projects as $project)--}}
             {{--<div class="row">--}}
             {{--{{$project->titre}}--}}

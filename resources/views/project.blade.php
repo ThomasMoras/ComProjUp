@@ -127,25 +127,28 @@
             <div class="align-center ">
 
                 <!-- Button HTML (to Trigger Modal) -->
-                <a href="#myModal" role="button" class="btn btn-large btn-primary" data-toggle="modal">Launch Demo Modal</a>
-
-
+                {{--<a href="#myModal" role="button" class="btn btn-large btn-primary" data-toggle="modal">Launch Demo Modal</a>--}}
+            <!-- Button trigger modal -->
+                <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                    Launch demo modal
+                </button>
             </div>
         </div>
 
     </section>
 
-    <!-- Modal HTML -->
-    <div id="myModal" class="modal fade">
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <h4 class="modal-title">Confirmation</h4>
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
                 </div>
                 <div class="modal-body">
-                    <p>Do you want to save changes you made to document before closing?</p>
-                    <p class="text-warning"><small>If you don't save, your changes will be lost.</small></p>
+                    ...
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
