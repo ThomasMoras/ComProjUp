@@ -3,7 +3,6 @@
 @section('content')
 
     <div class="row">
-
         <form class="form-horizontal col-sm-10 box" role="form" enctype="multipart/form-data" method="POST" action="{!! url('profil') !!}" accept-charset="UTF-8">
             {!! csrf_field() !!}
             <fieldset>
@@ -176,9 +175,9 @@
                                     @if($project->user_id == $utilisateur->id)
                                         <a href="{{ route('project.modify',$project) }}">
                                             <div class="box"
-                                            @if($project->professionnel == 1)
-                                                style="background: sandybrown"
-                                            @endif
+                                                 @if($project->professionnel == 1)
+                                                 style="background: sandybrown"
+                                                    @endif
                                             >
                                                 <div class="row">
                                                     <div style="width: 100%">

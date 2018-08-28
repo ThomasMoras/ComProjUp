@@ -129,34 +129,74 @@
                 <!-- Button HTML (to Trigger Modal) -->
                 {{--<a href="#myModal" role="button" class="btn btn-large btn-primary" data-toggle="modal">Launch Demo Modal</a>--}}
             <!-- Button trigger modal -->
-                <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-                    Launch demo modal
+                {{--<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">--}}
+                    {{--Launch demo modal--}}
+                {{--</button>--}}
+                <button
+                        type="button"
+                        class="btn btn-primary btn-lg"
+                        data-toggle="modal"
+                        data-target="#favoritesModal">
+                    Add to Favorites
                 </button>
             </div>
         </div>
 
     </section>
 
-
-
-    <!-- Modal -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+    <div class="modal fade" id="favoritesModal"
+         tabindex="-1" role="dialog"
+         aria-labelledby="favoritesModalLabel">
+        <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                    <button type="button" class="close"
+                            data-dismiss="modal"
+                            aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title"
+                        id="favoritesModalLabel">The Sun Also Rises</h4>
                 </div>
                 <div class="modal-body">
-                    ...
+                    <p>
+                        Please confirm you would like to add
+                        <b><span id="fav-title">The Sun Also Rises</span></b>
+                        to your favorites list.
+                    </p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button"
+                            class="btn btn-default"
+                            data-dismiss="modal">Close</button>
+                    <span class="pull-right">
+          <button type="button" class="btn btn-primary">
+            Add to Favorites
+          </button>
+        </span>
                 </div>
             </div>
         </div>
     </div>
+
+    {{--<!-- Modal -->--}}
+    {{--<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">--}}
+        {{--<div class="modal-dialog">--}}
+            {{--<div class="modal-content">--}}
+                {{--<div class="modal-header">--}}
+                    {{--<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>--}}
+                    {{--<h4 class="modal-title" id="myModalLabel">Modal title</h4>--}}
+                {{--</div>--}}
+                {{--<div class="modal-body">--}}
+                    {{--...--}}
+                {{--</div>--}}
+                {{--<div class="modal-footer">--}}
+                    {{--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>--}}
+                    {{--<button type="button" class="btn btn-primary">Save changes</button>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</div>--}}
+
 @endsection
 
 

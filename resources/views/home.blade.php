@@ -3,13 +3,17 @@
 @section('content')
     <div class="container">
 
-        <div class="row">
-            <legend style="text-align: center; font-size: 25px">Filtre utilisateur</legend>
-            <form class="form-horizontal col-md-8 col-md-offset-2" role="form" enctype="multipart/form-data" method="POST" action="{!! url('home') !!}" accept-charset="UTF-8">
-                {!! csrf_field() !!}
-                    {{--<label class="col-4 control-label" for="textinput">Domaine</label>--}}
-                    <div class="col-4">
+        <div>
 
+            <form class="form-horizontal" role="form" enctype="multipart/form-data" method="POST" action="{!! url('home') !!}" accept-charset="UTF-8">
+                {!! csrf_field() !!}
+                {{--<label class="col-4 control-label" for="textinput">Domaine</label>--}}
+
+                <div class="row">
+                    <div class="col-sm-4" style="margin-left: 16.5%">
+                        <legend style="font-size: 25px">Filtre utilisateur</legend>
+                    </div>
+                    <div class="col-sm-4">
                         <select name="domaine" id="domaine" class="form-control">
                             <option value ="">Aucun critère</option>
                             @foreach ($domaines as $domaine)
@@ -17,12 +21,15 @@
                             @endforeach
                         </select>
                     </div>
-                <div class="pull-right">
-                    <button type="submit" class="btn btn-primary">Envoie</button>
+                    <div class="col-sm-4">
+                        <button type="submit" class="btn btn-primary">Envoie</button>
+                    </div>
                 </div>
-            </form>
 
+
+            </form>
         </div>
+
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 @foreach ($utilisateurs as $user)

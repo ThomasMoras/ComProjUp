@@ -30,9 +30,9 @@
         <div class="row">
             <p> {{$user->description}}</p>
         </div>
-
         <div class="row pull-right">
-            <button class="btn-primary">Demande de contact </button>
+            <button onclick="location.href='{{ url('profil/askContact', $user) }}'" >
+                Demande de contact</button>
         </div>
 
         <br>

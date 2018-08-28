@@ -20,39 +20,26 @@
                         <li ><a href="{{ route('search') }}">Recherche membres</a></li>
                         <li ><a href="{{ route('search-project') }}">Recherche projets</a></li>
                         <li ><a href="{{ route('conversations') }}">Conversation</a></li>
-
-                        {{--<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">--}}
-                        {{--<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>--}}
-                        {{--<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>--}}
-                        {{--<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>--}}
-                        {{--<li role="presentation" class="divider"></li>--}}
-                        {{--<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>--}}
-                        {{--</ul>--}}
-                        {{--<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu3">--}}
-                            {{--<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Regular link</a></li>--}}
-                            {{--<li role="presentation" class="disabled"><a role="menuitem" tabindex="-1" href="#">Disabled link</a></li>--}}
-                            {{--<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another link</a></li>--}}
-                        {{--</ul>--}}
-                        {{--<ul class="dropdown-menu" role="menu">--}}
-                            {{--<li><a href="#">Action</a></li>--}}
-                            {{--<li><a href="#">Another action</a></li>--}}
-                            {{--<li><a href="#">Something else here</a></li>--}}
-                            {{--<li class="divider"></li>--}}
-                            {{--<li><a href="#">Separated link</a></li>--}}
-                        {{--</ul>--}}
-
                     @endif
                     @if (Auth::guest())
                         <li><a href="{{ route('login') }}">Login</a></li>
                         <li><a href="{{ route('register') }}">Register</a></li>
                     @else
                         <div class="pull-right">
+                            <!-- Single button -->
+                            <li>
+
+                            <li><a href="{{ route('notification')}}">
+                                    <span class="glyphicon glyphicon-globe"></span>
+                                    Demande de contact
+                                    <span class="badge">{{count(auth()->user()->unreadNotifications)}}</span>
+                                </a>
+                            </li>
+
                             <li><a href="#"> {{ Auth::user()->name }}</a></li>
                             <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                     Logout</a></li>
-
                         </div>
-
                     @endif
                 </ul>
             </nav>
@@ -163,4 +150,5 @@
         {{--@yield('content')--}}
 
     </div>
+
 @endsection

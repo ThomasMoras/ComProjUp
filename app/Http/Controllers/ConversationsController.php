@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use projetPhp\Message;
 //use projetPhp\Repository\ConversationRepository;
 use projetPhp\User;
+use projetPhp\Contact;
 use Illuminate\Auth\AuthManager;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -30,10 +31,28 @@ class ConversationsController extends Controller
     public function index () {
 
         $userId = $this->auth->user()->id;
+//
+//        $conversations = User::select('name', 'id', 'image')
+//            ->where('id', '!=', $userId)
+//            ->get();
+        $conversations = array();
+        $query_receive = ['receive_user', '=',  $userId];
+        $query_ask = ['ask_user', '=',  $userId];
 
-        $conversations = User::select('name', 'id', 'image')
-            ->where('id', '!=', $userId)
-            ->get();
+        $contacts = Contact::where([$query_ask])->get();
+        foreach($contacts as $contact) {
+            if($contact->accept == true) {
+                $user = User::where('id', '=', $contact['receive_user'])->first();
+                array_push($conversations, $user);
+            }
+        }
+        $contacts = Contact::where([$query_receive])->get();
+        foreach($contacts as $contact) {
+            if($contact->accept == true) {
+                $user = User::where('id','=',$contact['ask_user'])->first();
+                array_push($conversations, $user);
+            }
+        }
 
         return view('index', [
             'users' => $conversations

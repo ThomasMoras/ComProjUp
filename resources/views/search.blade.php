@@ -7,9 +7,9 @@
             {!! csrf_field() !!}
             <fieldset>
 
-                <legend style="text-align: center; font-size: 25px">Recherche</legend>
+                <legend style="text-align: center; font-size: 25px; font-weight: bold;">Recherche</legend>
 
-                <div class="row">
+                <div class="row" style="margin-top: 5%">
                     <div class="col-6" style="margin-top: 2%">
                         <div class="row">
                             <label class="col-4 control-label" for="textinput">Département</label>

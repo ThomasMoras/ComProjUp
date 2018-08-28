@@ -9,6 +9,7 @@
     <meta name="author" content="">
     <link rel="stylesheet" href="../assets/css/mainm.css" />
     <link rel="stylesheet" href="../../assets/css/mainm.css" />
+    <link rel="stylesheet" href="../../../assets/css/mainm.css" />
 
 </head>
 <body class="is-preload">
@@ -46,23 +47,40 @@
     </nav>
 
 </header>
-<div>
+
+<div >
+
     @yield('main')
 </div>
 
 </body>
 </html>
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/js/browser.min.js"></script>
-<script src="assets/js/breakpoints.min.js"></script>
-<script src="assets/js/util.js"></script>
-<script src="assets/js/main.js"></script>
-<script src="assets/js/browser.min.js"></script>
-<script src="assets/js/breakpoints.min.js"></script>
-<script src="assets/js/bootstrap.min.js"></script>
-<script src="assets/js/retina-1.1.0.js"></script>
-<script src="assets/js/jquery.hoverdir.js"></script>
-<script src="assets/js/jquery.hoverex.min.js"></script>
-<script src="assets/js/jquery.prettyPhoto.js"></script>
-<script src="assets/js/jquery.isotope.min.js"></script>
-<script src="assets/js/custom.js"></script>
+<script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
+
+{{--<script src="../../assets/js/bootstrap.js"></script>--}}
+
+{{--<script src="../../../public/assets/js/jquery.min.js"></script>--}}
+{{--<script src="../../../public/assets/js/util.js"></script>--}}
+{{--<script src="../../../public/assets/js/main.js"></script>--}}
+
+{{--<script src="../../../public/assets/js/bootstrap.min.js"></script>--}}
+{{--<script>--}}
+    {{--$(document).ready(function () {--}}
+        {{--$('.dropdown-toggle').dropdown();--}}
+    {{--});--}}
+{{--</script>--}}
+
+{{--<script src="assets/js/browser.min.js"></script>--}}
+{{--<script src="assets/js/browser.min.js"></script>--}}
+{{--<script src="assets/js/breakpoints.min.js"></script>--}}
+{{--<script src="assets/js/util.js"></script>--}}
+{{--<script src="assets/js/main.js"></script>--}}
+{{--<script src="assets/js/browser.min.js"></script>--}}
+{{--<script src="assets/js/breakpoints.min.js"></script>--}}
+{{--<script src="assets/js/bootstrap.min.js"></script>--}}
+{{--<script src="assets/js/retina-1.1.0.js"></script>--}}
+{{--<script src="assets/js/jquery.hoverdir.js"></script>--}}
+{{--<script src="assets/js/jquery.hoverex.min.js"></script>--}}
+{{--<script src="assets/js/jquery.prettyPhoto.js"></script>--}}
+{{--<script src="assets/js/jquery.isotope.min.js"></script>--}}
+{{--<script src="assets/js/custom.js"></script>--}}

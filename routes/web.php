@@ -35,6 +35,11 @@ Route::post('/home', 'HomeController@filter')->name('home');
 Route::get('/profil', 'ProfilController@index')->name('profil');
 Route::post('/profil', 'ProfilController@create')->name('profil');
 Route::get('/profil/{user}', 'ProfilController@view')->name('profil.view');
+Route::get('/profil/askContact/{user}', 'ProfilController@askContact')->name('profil/askContact');
+Route::get('/profil/response/1/{user}', 'ProfilController@responseT')->name('profil/response/1');
+Route::get('/profil/response/0/{user}', 'ProfilController@responseF')->name('profil/response/0');
+
+Route::get('/notification', 'ProfilController@notification')->name('notification');
 
 Route::get('/search', 'SearchController@index')->name('search');
 Route::post('/search', 'SearchController@create')->name('search');
@@ -52,6 +57,7 @@ Route::post('/project/create', 'ProjectController@create')->name('project.create
 Route::post('/project/update/{project}', 'ProjectController@update')->name('project.update');
 
 Route::get('/project/show/{project}', 'ProjectController@view')->name('project.view');
+
 
 
 
