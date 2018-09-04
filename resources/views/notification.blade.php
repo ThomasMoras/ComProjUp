@@ -11,7 +11,7 @@
                 <th class="align-center" scope="col">Nom</th>
                 <th class="align-center" scope="col">Prénom</th>
                 <th class="align-center" scope="col">Domaine</th>
-                <th class="align-center" scope="col">Profile</th>
+                <th class="align-center" scope="col">Profil</th>
                 <th class="align-center" scope="col">Accepter</th>
                 <th class="align-center" scope="col">Supprimer</th>
             </tr>
@@ -26,7 +26,7 @@
                         <td>{{$user['domaine']['nom']}}</td>
                         <td>
                             <ul class="icons">
-                                <li><a href="{{ route('profil.view', $user) }}" class="fa-eye"><span class="label">Profile</span></a></li>
+                                <li><a href="{{ route('profil.view', $user) }}" class="fa-eye"><span class="label">Profil</span></a></li>
                             </ul>
                         </td>
                         <td>

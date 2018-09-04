@@ -157,11 +157,7 @@
 @section('projects')
     <section>
         <div class="row">
-            {{--<form class="form-horizontal col-12 box" role="form" enctype="multipart/form-data" method="POST" action="{!! url('profil') !!}" accept-charset="UTF-8">--}}
-            {{--<fieldset>--}}
 
-            {{--<!-- Form Name -->--}}
-            {{--<legend style="text-align: center; font-size: 25px">Mes projets</legend>--}}
             <div class="col-12 box">
                 <h2 class="align-center">
                     Mes projets
@@ -202,8 +198,11 @@
                                     @endif
                                 @endforeach
                             @endif
-                            <button class="btn btn-primary"><a href="{{ route('project.init') }}">Créer un nouveau projet</a></button>
-
+                            <a href="{{  route('project.init') }}">
+                                <div class="align-center ">
+                                    <button class="btn btn-primary">Créer un nouveau projet</button>
+                                </div>
+                            </a>
                         </div>
                     </div>
                 </div>

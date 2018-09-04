@@ -16,7 +16,7 @@
 
                 <ul>
                     @if(Auth::check())
-                        <li ><a href="{{ route('profil') }}">Profile</a></li>
+                        <li ><a href="{{ route('profil') }}">Profil</a></li>
                         <li ><a href="{{ route('search') }}">Recherche membres</a></li>
                         <li ><a href="{{ route('search-project') }}">Recherche projets</a></li>
                         <li ><a href="{{ route('conversations') }}">Conversation</a></li>
@@ -27,7 +27,12 @@
                     @else
                         <div class="pull-right">
                             <!-- Single button -->
-                            <li>
+                            <li><a href="{{ route('notification_membre')}}">
+                                    <span class="glyphicon glyphicon-globe"></span>
+                                    Demande de membre
+                                    <span class="badge">{{count(auth()->user()->test)}}</span>
+                                </a>
+                            </li>
 
                             <li><a href="{{ route('notification')}}">
                                     <span class="glyphicon glyphicon-globe"></span>

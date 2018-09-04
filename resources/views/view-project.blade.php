@@ -42,13 +42,10 @@
             </div>
         </div>
 
+        {{--<div class="align-center">--}}
+            {{--<button> Postuler </button>--}}
+        {{--</div>--}}
     </div>
-
-    {{--<div class="row pull-right">--}}
-        {{--<button class="btn-primary">Toto </button>--}}
-    {{--</div>--}}
-
-    {{--<br>--}}
 
     </div>
 
@@ -57,12 +54,60 @@
             <h2>
                 Equipe
             </h2>
+            @if($membres != null && $membres->count() > 0)
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Domaine</th>
+                        <th scope="col">Détail</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($membres as $membre)
+                        <tr>
+                            <td>{{$membre->user->name}}</td>
+                            <td>{{$membre->user->domaine->nom}}</td>
+                            <td>
+                                <ul class="icons">
+                                    <li><a href="{{ route('profil.view', $membre->user) }}" class="fa-eye"><span class="label">Utilisateur</span></a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            @endif
         </div>
 
         <div class="row">
             <h2>
                 Place disponible
             </h2>
+            @if($libres->count() > 0 && $libres != null)
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Domaine</th>
+                        <th scope="col">Détail</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($libres as $member)
+                        <tr>
+                            <td>{{$member->nom}}</td>
+                            <td>{{$member->domaine->nom}}</td>
+                            <td>
+                                <ul class="icons">
+                                    <li><a href="{{ route('show_poste', $member) }}" class="fa-eye"><span class="label">Poste</span></a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            @endif
         </div>
     </div>
 

@@ -7,7 +7,7 @@
             {!! csrf_field() !!}
             <fieldset>
 
-                <legend style="text-align: center; font-size: 25px; font-weight: bold;">Recherche</legend>
+                <legend style="text-align: center; font-size: 25px; font-weight: bold;">Recherche de membres</legend>
 
                 <div class="row" style="margin-top: 5%">
                     <div class="col-6" style="margin-top: 2%">
@@ -74,7 +74,7 @@
                     <th scope="col">Compétences</th>
                     <th scope="col">Contrat</th>
                     <th scope="col">Département</th>
-                    <th scope="col">Profile</th>
+                    <th scope="col">Profil</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -98,7 +98,7 @@
                                 <td>{{$user->departement}}</td>
                                 <td>
                                     <ul class="icons">
-                                        <li><a href="{{ route('profil.view', $user) }}" class="fa-eye"><span class="label">Profile</span></a></li>
+                                        <li><a href="{{ route('profil.view', $user) }}" class="fa-eye"><span class="label">Profil</span></a></li>
                                     </ul>
                                 </td>
                             </tr>

@@ -16,7 +16,8 @@ class User extends Authenticatable
      */
     protected $fillable = [
     'name', 'prenom', 'description', 'departement', 'email', 'password', 'domaine_id', 'contrat_id', 'image', 'competence'
-];
+
+    ];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -35,5 +36,11 @@ class User extends Authenticatable
         return $this->belongsTo(Contrat::class);
     }
 
+    public function member() {
+        return $this->hasOne('Member','user_id');
+    }
 
+    public function test() {
+        return -5;
+    }
 }

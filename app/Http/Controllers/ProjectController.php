@@ -10,6 +10,7 @@ namespace projetPhp\Http\Controllers;
 
 use projetPhp\Contrat;
 use projetPhp\Domaine;
+use projetPhp\Member;
 use projetPhp\Project;
 use Illuminate\Http\Request;
 use projetPhp\User;
@@ -29,8 +30,9 @@ class ProjectController extends Controller
     public function view(Project $project)
     {
         $user = User::where('id','=',$project->user_id);
-
-        return view('view-project',['user' => $user, 'project' => $project]);
+        $libres = Member::whereRaw("project_id = $project->id AND user_id is null")->get();
+        $membres = Member::whereRaw("project_id = $project->id AND user_id is not null")->get();
+        return view('view-project',['user' => $user, 'project' => $project, 'libres' => $libres, 'membres' => $membres]);
     }
 
     public function modify(Project $project)
@@ -38,13 +40,13 @@ class ProjectController extends Controller
         $user = auth()->user();
         $domaines = Domaine::orderBy('nom', 'ASC')->get();
         $contrats = Contrat::orderBy('nom', 'ASC')->get();
-        return view('project',['utilisateur' => $user, 'domaines' => $domaines, 'contrats' => $contrats, 'my_proj' => $project]);
+        $libres = Member::whereRaw("project_id = $project->id AND user_id is null")->get();
+        $membres = Member::whereRaw("project_id = $project->id AND user_id is not null")->get();
+        return view('project',['utilisateur' => $user, 'domaines' => $domaines, 'contrats' => $contrats, 'my_proj' => $project, 'libres' => $libres, 'membres' => $membres]);
     }
 
     public function update(Request $request, Project $project)
     {
-//        dd($request);
-
         $project->titre =$request->input('titre');
         $project->description =$request->input('description');
         $project->objectif =$request->input('objectif');
@@ -57,7 +59,6 @@ class ProjectController extends Controller
         }
         $project->professionnel = $bool;
 
-//        dd($project);
         if($request->file() != null) {
 
             $this->validate($request, [
@@ -73,49 +74,11 @@ class ProjectController extends Controller
         $project->save();
 
         return redirect()->route('profil');
-
-//        $user->name = $request->input('name');
-//        $user->prenom = $request->input('prenom');
-//        $user->description = $request->input('description');
-//        $user->departement = $request->input('departement');
-//        $user->competence = $request->input('competence');
-//        $user->email = $request->input('email');
-//
-//        if($request->input('domaine') != "") {
-//            $domaine = Domaine::find($request->input('domaine'));
-//            $user->domaine_id = $domaine->id;
-//        }
-//
-//        if($request->input('contrat') != "") {
-//            $contrat = Contrat::find($request->input('contrat'));
-//            $user->contrat_id = $contrat->id;
-//        }
-//
-//        if($request->file() != null) {
-//
-//            $this->validate($request, [
-//                'image_file' => 'required|image|mimes:jpeg,png,jpg,gif',
-//            ]);
-//
-//            $imageName = time().'.'.$request->image_file->getClientOriginalExtension();
-//            $request->image_file->move(public_path('images'), $imageName);
-//
-//            $user->image = $imageName;
-//        }
-//
-//        $user->save();
-//
-//        return redirect()->route('profil');
     }
 
     public function create(Request $request)
     {
         $user = auth()->user();
-//        $domaines = Domaine::orderBy('nom', 'ASC')->get();
-//        $contrats = Contrat::orderBy('nom', 'ASC')->get();
-
-//        $proj = Project::where('nom', 'ASC')->get();
-//        dd($request);
 
         if($request->input('professionnel') === 'on')
             $bool = true;
@@ -134,41 +97,6 @@ class ProjectController extends Controller
             'nb_personne' => 0,
             'user_id' => $user->id
         ]);
-
-//        dd($request);
-
-//        $user = auth()->user();
-//
-//        $user->name = $request->input('name');
-//        $user->prenom = $request->input('prenom');
-//        $user->description = $request->input('description');
-//        $user->departement = $request->input('departement');
-//        $user->competence = $request->input('competence');
-//        $user->email = $request->input('email');
-//
-//        if($request->input('domaine') != "") {
-//            $domaine = Domaine::find($request->input('domaine'));
-//            $user->domaine_id = $domaine->id;
-//        }
-//
-//        if($request->input('contrat') != "") {
-//            $contrat = Contrat::find($request->input('contrat'));
-//            $user->contrat_id = $contrat->id;
-//        }
-//
-//        if($request->file() != null) {
-//
-//            $this->validate($request, [
-//                'image_file' => 'required|image|mimes:jpeg,png,jpg,gif',
-//            ]);
-//
-//            $imageName = time().'.'.$request->image_file->getClientOriginalExtension();
-//            $request->image_file->move(public_path('images'), $imageName);
-//
-//            $user->image = $imageName;
-//        }
-//
-//        $user->save();
 
         return redirect()->route('profil');
     }

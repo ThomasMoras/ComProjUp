@@ -7,10 +7,11 @@ use projetPhp\Contrat;
 use projetPhp\Domaine;
 use projetPhp\Contact;
 use Illuminate\Http\Request;
+use projetPhp\Member;
 use projetPhp\User;
 use projetPhp\Project;
 use projetPhp\Notifications\AskContact;
-use function Sodium\add;
+use DB;
 
 class ProfilController extends Controller
 {
@@ -24,12 +25,20 @@ class ProfilController extends Controller
         $projects = Project::where('user_id', '=',$user->id)->orderBy('created_at')->get();
 
         $user->notify(new AskContact($current_user));
-        return view('view-profil',['user' => $user, 'create_projects' => $projects]);
+
+        $member_projects = array();
+        $members = Member::where('user_id','=',$user->id)->get();
+        foreach ($members as $m) {
+            $proj = Project::where('id','=',$m->project_id)->first();
+            array_push($member_projects, $proj);
+        }
+
+        return view('view-profil',['user' => $user, 'create_projects' => $projects, 'member_projects' => $member_projects]);
     }
 
     public function responseT(User $user) {
         $current_user = auth()->user();
-        
+
         $contact = Contact::whereRaw("receive_user = $current_user->id AND ask_user = $user->id")->first();
         if($contact != null) {
             $contact->accept = true;
@@ -91,6 +100,7 @@ class ProfilController extends Controller
             'users' => $conversations
         ]);
     }
+
     public function notification() {
         $current_user = auth()->user();
 
@@ -101,10 +111,7 @@ class ProfilController extends Controller
         foreach($notifications as $notification) {
             $notification->markAsRead();
 
-            $query_ask = ['ask_user', '=',  $notification->data];
             $id = $notification->data['user']['id'];
-
-//            $contact = Contact::where([$query_ask],[$query_receive])->first();
             $contact = Contact::whereRaw("receive_user = $current_user->id AND ask_user = $id")
                 ->first();
             if($contact == null) {
@@ -140,9 +147,20 @@ class ProfilController extends Controller
 
     public function view(User $user)
     {
-        $projects = Project::where('user_id', '=',$user->id)->orderBy('created_at')->get();
+        $create_projects = Project::where('user_id', '=',$user->id)->orderBy('created_at')->get();
 
-        return view('view-profil',['user' => $user, 'create_projects' => $projects]);
+//        $member_projects = DB::table('projects')
+//            ->join('members', 'projects.id', '=', 'members.project_id')
+//            ->select('projects.*')
+//            ->get();
+//        dd($member_projects);
+        $member_projects = array();
+        $members = Member::where('user_id','=',$user->id)->get();
+        foreach ($members as $m) {
+            $proj = Project::where('id','=',$m->project_id)->first();
+            array_push($member_projects, $proj);
+        }
+        return view('view-profil',['user' => $user, 'create_projects' => $create_projects, 'member_projects' => $member_projects]);
     }
 
     public function create(Request $request)

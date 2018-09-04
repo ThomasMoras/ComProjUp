@@ -92,6 +92,37 @@
 
         <div class="row">
             <h3> Membre </h3>
+            @if($member_projects != null)
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col">Titre</th>
+                        <th scope="col">Domaine</th>
+                        <th scope="col">Statut</th>
+                        <th scope="col">Détail</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($member_projects as $mp)
+                        <tr>
+                            <td>{{$mp->titre}}</td>
+                            <td>{{$mp->domaine->nom}}</td>
+                            <td> </td>
+
+                            <td>
+                                <ul class="icons">
+                                    <li><a href="{{ route('project.view', $mp) }}" class="fa-eye"><span class="label">Projet</span></a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            @else
+                <div>
+                    <p>Vide</p>
+                </div>
+            @endif
         </div>
     </div>
 @endsection

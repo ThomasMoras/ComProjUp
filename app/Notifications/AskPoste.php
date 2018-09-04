@@ -5,7 +5,7 @@ namespace projetPhp\Notifications;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 
-class askContact extends Notification
+class askPoste extends Notification
 {
     use Queueable;
     protected $user;

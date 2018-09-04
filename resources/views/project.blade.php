@@ -6,7 +6,7 @@
 
         <div class="row">
 
-            @if($my_proj == null)
+            @if($my_proj->id == null)
                 <form class="form-horizontal col-sm-12 box" role="form" enctype="multipart/form-data" method="POST" action="{!! url('project/create') !!}" accept-charset="UTF-8" style="width: 95%; margin-left: 5%">
                     @else
                         <form class="form-horizontal col-sm-12 box" role="form" enctype="multipart/form-data" method="POST" action="{!! url('project/update',$my_proj) !!}" accept-charset="UTF-8" style="width: 95%; margin-left: 5%">
@@ -15,11 +15,11 @@
                             <fieldset>
 
                                 <!-- Form Name -->
-                                @if($my_proj == null)
+                                @if($my_proj->id == null)
                                     <legend style="text-align: center; font-size: 165%; font-weight: bold;">Création de projet</legend>
                                 @else
                                     <legend style="text-align: center; font-size: 165%; font-weight: bold;">Modification du projet</legend>
-                            @endif
+                                @endif
                             <!-- Text input-->
                                 <div class="align-center" style="margin-top: 2%">
                                     @if($my_proj->image != null)
@@ -97,7 +97,7 @@
                                 </div>
 
                                 {{--<div>--}}
-                                    {{--<h2>Gestion des membres</h2>--}}
+                                {{--<h2>Gestion des membres</h2>--}}
                                 {{--</div>--}}
 
                                 <div class="form-group" style="margin-top: 2%">
@@ -118,85 +118,55 @@
 
 @endsection
 
+@if($my_proj->id != null)
 @section('team')
     <section id="team">
         <div class="box">
             <header>
                 <h2 class="align-center">Gestion membres</h2>
             </header>
-            <div class="align-center ">
-
-                <!-- Button HTML (to Trigger Modal) -->
-                {{--<a href="#myModal" role="button" class="btn btn-large btn-primary" data-toggle="modal">Launch Demo Modal</a>--}}
-            <!-- Button trigger modal -->
-                {{--<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">--}}
-                    {{--Launch demo modal--}}
-                {{--</button>--}}
-                <button
-                        type="button"
-                        class="btn btn-primary btn-lg"
-                        data-toggle="modal"
-                        data-target="#favoritesModal">
-                    Add to Favorites
-                </button>
+            <div>
+                <h3>Membres</h3>
+                @if($membres != null)
+                    @foreach($membres as $membre)
+                        <a href="{{ route('modify_poste',$membre) }}">
+                            <div class="box">
+                                <div class="row">
+                                    <div style="width: 100%">
+                                        <h3 style="">{{$membre->domaine->nom}} : {{$membre->user->name}}
+                                        </h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    @endforeach
+                @endif
             </div>
+            <div>
+                <h3>Poste disponible</h3>
+                @if($libres != null)
+                    @foreach($libres as $libre)
+                        <a href="{{ route('modify_poste',$libre) }}">
+                            <div class="box">
+                                <div class="row">
+                                    <div style="width: 100%">
+                                        <h3 style="">{{$libre->domaine->nom}} : {{$libre->nom}}
+                                        </h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    @endforeach
+                @endif
+            </div>
+            <a href="{{ route('init', $my_proj) }}">
+                <div class="align-center ">
+                    <button class="btn btn-primary">Ajout de poste</button>
+                </div>
+            </a>
         </div>
 
     </section>
-
-    <div class="modal fade" id="favoritesModal"
-         tabindex="-1" role="dialog"
-         aria-labelledby="favoritesModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close"
-                            data-dismiss="modal"
-                            aria-label="Close">
-                        <span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title"
-                        id="favoritesModalLabel">The Sun Also Rises</h4>
-                </div>
-                <div class="modal-body">
-                    <p>
-                        Please confirm you would like to add
-                        <b><span id="fav-title">The Sun Also Rises</span></b>
-                        to your favorites list.
-                    </p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button"
-                            class="btn btn-default"
-                            data-dismiss="modal">Close</button>
-                    <span class="pull-right">
-          <button type="button" class="btn btn-primary">
-            Add to Favorites
-          </button>
-        </span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    {{--<!-- Modal -->--}}
-    {{--<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">--}}
-        {{--<div class="modal-dialog">--}}
-            {{--<div class="modal-content">--}}
-                {{--<div class="modal-header">--}}
-                    {{--<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>--}}
-                    {{--<h4 class="modal-title" id="myModalLabel">Modal title</h4>--}}
-                {{--</div>--}}
-                {{--<div class="modal-body">--}}
-                    {{--...--}}
-                {{--</div>--}}
-                {{--<div class="modal-footer">--}}
-                    {{--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>--}}
-                    {{--<button type="button" class="btn btn-primary">Save changes</button>--}}
-                {{--</div>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-    {{--</div>--}}
-
 @endsection
-
+@endif
 

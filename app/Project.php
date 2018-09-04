@@ -17,10 +17,6 @@ class Project extends Model
         'titre', 'objectif', 'description', 'image', 'domaine_id', 'professionnel', 'dure', 'nb_personne', 'user_id'
     ];
 
-//    public function user() {
-//        return $this->hasOne('User','domaine_id');
-//    }
-
     public function domaine() {
         return $this->belongsTo(Domaine::class);
     }
