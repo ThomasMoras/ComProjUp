@@ -8,15 +8,15 @@
         <header id="header">
 
             @if(Auth::check())
-                <h1><a href="/home">KiproMeet</a></h1>
+                <h1><a href="/home">ComProjUp</a></h1>
             @else
-                <h1><a href="/">KiproMeet</a></h1>
+                <h1><a href="/">ComProjUp</a></h1>
             @endif
             <nav class="links">
 
                 <ul>
                     @if(Auth::check())
-                        <li ><a href="{{ route('profil') }}">Profil</a></li>
+                        <li ><a href="{{ route('profil') }}">Profile</a></li>
                         <li ><a href="{{ route('search') }}">Recherche membres</a></li>
                         <li ><a href="{{ route('search-project') }}">Recherche projets</a></li>
                         <li ><a href="{{ route('conversations') }}">Conversation</a></li>
@@ -27,10 +27,10 @@
                     @else
                         <div class="pull-right">
                             <!-- Single button -->
-                            <li><a href="{{ route('notification_membre')}}">
+                            <li><a href="{{ route('notification_member')}}">
                                     <span class="glyphicon glyphicon-globe"></span>
                                     Demande de membre
-                                    <span class="badge">{{count(auth()->user()->test)}}</span>
+                                    <span class="badge">{{count(auth()->user()->unreadNotifications)}}</span>
                                 </a>
                             </li>
 

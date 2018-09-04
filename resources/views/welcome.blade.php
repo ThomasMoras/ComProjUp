@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link rel="icon" href="assets/img/favicon.ico">
 
-    <title>KiproMeet</title>
+    <title>ComProjUp</title>
 
     <!-- Bootstrap core CSS-->
     <link href="assets/css/bootstrap.css" rel="stylesheet">
@@ -31,12 +31,12 @@
 
 <div id="h">
     <div class="logo">
-        <h2>KiproMeet</h2>
+        <h2>ComProjUp</h2>
     </div><!--/logo-->
     <div class="container centered">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
-                <h2>Bienvenue sur le site <b>KiproMeet</b>.<br/>Ici, vous pourrez rencontrer des professionnels pour discuter ou réaliser des projets.</h2>
+                <h2>Bienvenue sur le site <b>ComProjUp</b>.<br/>Ici, vous pourrez rencontrer des professionnels pour discuter ou réaliser des projets.</h2>
             </div>
         </div><!--/row-->
 

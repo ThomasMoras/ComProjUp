@@ -7,14 +7,14 @@
     <!-- Header -->
     <header id="header">
         @if(Auth::check())
-            <h1><a href="/home">KiproMeet</a></h1>
+            <h1><a href="/home">ComProjUp</a></h1>
         @else
-            <h1><a href="/">KiproMeet</a></h1>
+            <h1><a href="/">ComProjUp</a></h1>
         @endif
         <nav class="links">
             <ul>
                 @if(Auth::check())
-                    <li ><a href="{{ route('profil') }}">Profil</a></li>
+                    <li ><a href="{{ route('profil') }}">Profile</a></li>
                     <li ><a href="{{ route('search') }}">Recherche</a></li>
                     <li ><a href="{{ route('conversations') }}">Conversation</a></li>
                 @endif

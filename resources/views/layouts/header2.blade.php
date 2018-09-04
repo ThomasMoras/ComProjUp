@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 <head>
-    <title>KiproMeet</title>
+    <title>ComProjUp</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,14 +15,14 @@
 <body class="is-preload">
 <header id="header">
     @if(Auth::check())
-        <h1><a href="/home">KiproMeet</a></h1>
+        <h1><a href="/home">ComProjUp</a></h1>
     @else
-        <h1><a href="/">KiproMeet</a></h1>
+        <h1><a href="/">ComProjUp</a></h1>
     @endif
     <nav class="links">
         <ul>
             @if(Auth::check())
-                <li ><a href="{{ route('profil') }}">Profil</a></li>
+                <li ><a href="{{ route('profil') }}">Profile</a></li>
                 <li ><a href="{{ route('search') }}">Recherche</a></li>
                 <li ><a href="{{ route('conversations') }}">Conversation</a></li>
             @endif

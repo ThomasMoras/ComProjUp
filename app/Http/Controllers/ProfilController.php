@@ -20,6 +20,10 @@ class ProfilController extends Controller
         $this->middleware('auth');
     }
 
+    public function notification_member() {
+        return view('notification_member');
+    }
+
     public function askContact(User $user) {
         $current_user = auth()->user();
         $projects = Project::where('user_id', '=',$user->id)->orderBy('created_at')->get();

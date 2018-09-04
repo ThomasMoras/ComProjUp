@@ -11,7 +11,7 @@
                 <th class="align-center" scope="col">Nom</th>
                 <th class="align-center" scope="col">Prénom</th>
                 <th class="align-center" scope="col">Domaine</th>
-                <th class="align-center" scope="col">Profil</th>
+                <th class="align-center" scope="col">Profile</th>
                 <th class="align-center" scope="col">Projet</th>
                 <th class="align-center" scope="col">Poste</th>
                 <th class="align-center" scope="col">Accepter</th>

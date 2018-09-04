@@ -74,7 +74,7 @@
                     <th scope="col">Compétences</th>
                     <th scope="col">Contrat</th>
                     <th scope="col">Département</th>
-                    <th scope="col">Profil</th>
+                    <th scope="col">Profile</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -98,7 +98,7 @@
                                 <td>{{$user->departement}}</td>
                                 <td>
                                     <ul class="icons">
-                                        <li><a href="{{ route('profil.view', $user) }}" class="fa-eye"><span class="label">Profil</span></a></li>
+                                        <li><a href="{{ route('profil.view', $user) }}" class="fa-eye"><span class="label">Profile</span></a></li>
                                     </ul>
                                 </td>
                             </tr>
