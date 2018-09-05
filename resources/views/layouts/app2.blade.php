@@ -23,6 +23,20 @@
                     <li><a href="{{ route('register') }}">Register</a></li>
                 @else
                     <div class="pull-right">
+                        <li><a href="{{ route('notification_member')}}">
+                                <span class="glyphicon glyphicon-globe"></span>
+                                Demande de membre
+                                <span class="badge">{{Auth::user()->unreadNotificationsTypeCount('projetPhp\Notifications\askPoste')}}</span>
+                            </a>
+                        </li>
+
+                        <li><a href="{{ route('notification')}}">
+                                <span class="glyphicon glyphicon-globe"></span>
+                                Demande de contact
+                                <span class="badge">{{Auth::user()->unreadNotificationsTypeCount('projetPhp\Notifications\askContact')}}</span>
+                            </a>
+                        </li>
+
                         <li><a href="#"> {{ Auth::user()->name }}</a></li>
                         <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         Logout</a></li>

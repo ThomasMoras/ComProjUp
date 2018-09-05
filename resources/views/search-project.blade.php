@@ -78,7 +78,19 @@
                                 <td>{{$project->domaine->nom}}</td>
                             @endif
                             {{--<td>{{$user->$professionnel}}</td>--}}
-                            <td></td>
+                            @if($project->professionnel)
+                                <td>
+                                    <ul class="icons">
+                                        <li><a href="#" class="fa-check"><span class="label">Valider</span></a></li>
+                                    </ul>
+                                </td>
+                            @else
+                                <td>
+                                    <ul class="icons">
+                                        <li><a href="#" class="fa-times"><span class="label">Refuser</span></a></li>
+                                    </ul>
+                                </td>
+                            @endif
                             <td>
                                 <ul class="icons">
                                     <li><a href="{{ route('project.view', $project) }}" class="fa-eye"><span class="label">Projet</span></a></li>

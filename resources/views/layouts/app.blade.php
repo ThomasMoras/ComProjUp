@@ -26,7 +26,6 @@
                         <li><a href="{{ route('register') }}">Register</a></li>
                     @else
                         <div class="pull-right">
-                            <!-- Single button -->
                             <li><a href="{{ route('notification_member')}}">
                                     <span class="glyphicon glyphicon-globe"></span>
                                     Demande de membre

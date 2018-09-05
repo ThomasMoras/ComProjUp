@@ -78,7 +78,7 @@ class ConversationsController extends Controller
             ->where('contacts.ask_user', '=', $me->id)
             ->distinct()
             ->get();
-
+        $users = array();
         $messages = Message::whereRaw("((from_id = $me->id AND to_id = $user->id) OR (from_id = $user->id AND to_id = $me->id))")
             ->orderBy('created_at', 'ASC')->get();
 
