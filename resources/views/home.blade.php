@@ -67,7 +67,6 @@
     <section id="sidebar">
         <!-- Intro -->
         <section id="intro">
-            <a href="#" class="logo"><img src="assets/img/logo.png" alt="" /></a>
             <header>
                 <h2>{{$current_user->name }}   {{$current_user->prenom}}</h2>
                 @if($current_user->domaine != null)
