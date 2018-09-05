@@ -9,13 +9,16 @@ class askPoste extends Notification
 {
     use Queueable;
     protected $user;
+    protected $poste;
+
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($user)
+    public function __construct($poste,$user)
     {
+        $this->poste=$poste;
         $this->user=$user;
     }
 
@@ -42,7 +45,8 @@ class askPoste extends Notification
     {
 //        dd($notifiable);
         return [
-            'user'=>$this->user
+            'member'=>$this->poste,
+            'user'=>$this->user,
         ];
     }
 

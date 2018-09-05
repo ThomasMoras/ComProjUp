@@ -4,6 +4,9 @@ namespace projetPhp;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+//use Illuminate\Notifications\Notification;
+use projetPhp\Notification;
+use projetPhp\Contact;
 
 class User extends Authenticatable
 {
@@ -40,7 +43,54 @@ class User extends Authenticatable
         return $this->hasOne('Member','user_id');
     }
 
-    public function test() {
-        return -5;
+    public function askmember() {
+        return $this->hasOne('AskMember','ask_user');
+    }
+
+    public function isContact(User $user) {
+        $current_user = auth()->user();
+
+        $contact1 = Contact::whereRaw("ask_user = $current_user->id AND receive_user = $user->id")->first();
+        $contact2 = Contact::whereRaw("receive_user = $current_user->id AND ask_user = $user->id")->first();
+
+        if(!$contact1 && !$contact2){
+            return false;
+        }
+        return true;
+    }
+
+    public function unreadNotificationsType($type)
+    {
+//        dd($type);
+        $current_user = auth()->user();
+
+        $query_t = ['type', '=',  $type];
+        $query_r = ['read_at', '=',  null];
+        $query_u = ['notifiable_id', '=',  $current_user->id];
+
+        $n = Notification::where([$query_t,$query_r,$query_u])->get();
+
+
+//        $notifications = Notification::whereRaw("type = $type AND read_at is NULL")->first();
+//        dd($n);
+        return $n;
+    }
+
+    public function unreadNotificationsTypeCount($type)
+    {
+        $current_user = auth()->user();
+
+        $query_t = ['type', '=',  $type];
+        $query_r = ['read_at', '=',  null];
+        $query_u = ['notifiable_id', '=',  $current_user->id];
+
+        $n = Notification::where([$query_t,$query_r,$query_u])->get();
+
+        if($n != null) {
+            return $n->count();
+        }
+        else {
+            return 0;
+        }
     }
 }

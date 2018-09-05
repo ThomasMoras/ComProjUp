@@ -31,8 +31,11 @@
             <p> {{$user->description}}</p>
         </div>
         <div class="row pull-right">
+            @if(!$user->isContact($user) && $user->id != Auth::user()->id)
             <button onclick="location.href='{{ url('profil/askContact', $user) }}'" >
-                Demande de contact</button>
+                Demande de contact
+            </button>
+            @endif
         </div>
 
         <br>
@@ -56,9 +59,7 @@
                 <tr>
                     <th scope="col">Titre</th>
                     <th scope="col">Domaine</th>
-                    <th scope="col">Statut</th>
                     <th scope="col">Détail</th>
-
                 </tr>
                 </thead>
                 <tbody>
@@ -66,8 +67,6 @@
                         <tr>
                             <td>{{$project->titre}}</td>
                             <td>{{$project->domaine->nom}}</td>
-                            <td> </td>
-
                             <td>
                                 <ul class="icons">
                                     <li><a href="{{ route('project.view', $project) }}" class="fa-eye"><span class="label">Projet</span></a></li>
@@ -98,7 +97,6 @@
                     <tr>
                         <th scope="col">Titre</th>
                         <th scope="col">Domaine</th>
-                        <th scope="col">Statut</th>
                         <th scope="col">Détail</th>
                     </tr>
                     </thead>
@@ -107,8 +105,6 @@
                         <tr>
                             <td>{{$mp->titre}}</td>
                             <td>{{$mp->domaine->nom}}</td>
-                            <td> </td>
-
                             <td>
                                 <ul class="icons">
                                     <li><a href="{{ route('project.view', $mp) }}" class="fa-eye"><span class="label">Projet</span></a></li>

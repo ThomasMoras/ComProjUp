@@ -42,7 +42,8 @@ class askContact extends Notification
     {
 //        dd($notifiable);
         return [
-            'user'=>$this->user
+            'user'=>$this->user,
+            'type'=>'contacts'
         ];
     }
 

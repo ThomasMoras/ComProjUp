@@ -25,7 +25,11 @@ class Member extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function projet() {
+    public function project() {
         return $this->belongsTo(Project::class);
+    }
+
+    public function ask_member() {
+        return $this->hasOne('AskMember','poste_id');
     }
 }

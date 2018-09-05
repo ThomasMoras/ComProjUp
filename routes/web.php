@@ -40,7 +40,7 @@ Route::get('/profil/response/1/{user}', 'ProfilController@responseT')->name('pro
 Route::get('/profil/response/0/{user}', 'ProfilController@responseF')->name('profil/response/0');
 
 Route::get('/notification', 'ProfilController@notification')->name('notification');
-Route::get('/notification_member', 'ProfilController@notification_member')->name('notification_member');
+Route::get('/notification_member', 'NotificationMemberController@notification_member')->name('notification_member');
 
 Route::get('/search', 'SearchController@index')->name('search');
 Route::post('/search', 'SearchController@create')->name('search');
@@ -68,9 +68,9 @@ Route::post('/update_poste/{member}', 'MemberController@update_poste')->name('up
 
 Route::get('/show_poste/{member}', 'MemberController@show_poste')->name('show_poste');
 
-Route::get('/poste/askPoste/{member}', 'MemberController@askPoste')->name('poste/askPoste');
-Route::get('/poste/response/1/{user}', 'MemberController@responseT')->name('poste/response/1');
-Route::get('/poste/response/0/{user}', 'MemberController@responseF')->name('poste/response/0');
+Route::get('/poste/askPoste/{member}', 'NotificationMemberController@askPoste')->name('poste/askPoste');
+Route::get('/poste/response/1/{res}', 'NotificationMemberController@responseT')->name('poste/response/1');
+Route::get('/poste/response/0/{res}', 'NotificationMemberController@responseF')->name('poste/response/0');
 
 //Route::get('/create_poste', function () {
 //    return redirect()->route('profil');

@@ -20,15 +20,16 @@ class ProfilController extends Controller
         $this->middleware('auth');
     }
 
-    public function notification_member() {
-        return view('notification_member');
-    }
-
     public function askContact(User $user) {
         $current_user = auth()->user();
         $projects = Project::where('user_id', '=',$user->id)->orderBy('created_at')->get();
 
-        $user->notify(new AskContact($current_user));
+        $contact1 = Contact::whereRaw("ask_user = $current_user->id AND receive_user = $user->id")->first();
+        $contact2 = Contact::whereRaw("receive_user = $current_user->id AND ask_user = $user->id")->first();
+
+        if(!$contact1 && !$contact2){
+            $user->notify(new AskContact($current_user));
+        }
 
         $member_projects = array();
         $members = Member::where('user_id','=',$user->id)->get();
@@ -72,6 +73,7 @@ class ProfilController extends Controller
             'users' => $conversations
         ]);
     }
+
     public function responseF(User $user) {
         $current_user = auth()->user();
 
@@ -112,20 +114,23 @@ class ProfilController extends Controller
 
         $users = array();
         $notifications = auth()->user()->unreadNotifications;
+
         foreach($notifications as $notification) {
-            $notification->markAsRead();
+//            dd($notification['type']);
+            if($notification['type'] == 'projetPhp\Notifications\askContact') {
+                $notification->markAsRead();
 
-            $id = $notification->data['user']['id'];
-            $contact = Contact::whereRaw("receive_user = $current_user->id AND ask_user = $id")
-                ->first();
-            if($contact == null) {
-                Contact::create([
-                    'ask_user' => $notification->data['user']['id'],
-                    'receive_user' =>  $current_user->id,
-                    'accept' => null,
-                ]);
+                $id = $notification->data['user']['id'];
+                $contact = Contact::whereRaw("receive_user = $current_user->id AND ask_user = $id")
+                    ->first();
+                if($contact == null && ($current_user->id != $id)) {
+                    Contact::create([
+                        'ask_user' => $notification->data['user']['id'],
+                        'receive_user' =>  $current_user->id,
+                        'accept' => null,
+                    ]);
+                }
             }
-
         }
         $contacts = Contact::where([$query_receive])->get();
         foreach($contacts as $contact) {
@@ -159,7 +164,8 @@ class ProfilController extends Controller
 //            ->get();
 //        dd($member_projects);
         $member_projects = array();
-        $members = Member::where('user_id','=',$user->id)->get();
+        $members = Member::where('user_id','=',$user->id)->distinct()->get();
+//        dd($members);
         foreach ($members as $m) {
             $proj = Project::where('id','=',$m->project_id)->first();
             array_push($member_projects, $proj);

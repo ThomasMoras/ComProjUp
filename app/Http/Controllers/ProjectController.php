@@ -30,8 +30,8 @@ class ProjectController extends Controller
     public function view(Project $project)
     {
         $user = User::where('id','=',$project->user_id);
-        $libres = Member::whereRaw("project_id = $project->id AND user_id is null")->get();
-        $membres = Member::whereRaw("project_id = $project->id AND user_id is not null")->get();
+        $libres = Member::whereRaw("project_id = $project->id AND user_id is null")->distinct('user_id')->get();
+        $membres = Member::whereRaw("project_id = $project->id AND user_id is not null")->distinct('user_id')->get();
         return view('view-project',['user' => $user, 'project' => $project, 'libres' => $libres, 'membres' => $membres]);
     }
 

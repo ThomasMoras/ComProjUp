@@ -20,4 +20,8 @@ class Project extends Model
     public function domaine() {
         return $this->belongsTo(Domaine::class);
     }
+
+    public function member() {
+        return $this->hasOne('Member','project_id');
+    }
 }

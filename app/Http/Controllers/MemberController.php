@@ -21,12 +21,6 @@ class MemberController extends Controller
     public $proj;
     public $member;
 
-    public function askPoste(Member $member) {
-//        $current_user = auth()->user();
-        $user = User::where('id','=', $member->created_by)->first();
-        $user->notify(new AskPoste($user));
-        return view('poste_show',['member' => $member]);
-    }
     public function show_poste(Member $member)
     {
         $user = auth()->user();

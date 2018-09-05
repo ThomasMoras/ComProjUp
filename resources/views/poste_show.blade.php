@@ -29,10 +29,12 @@
                 <p> {{$member->competence}}</p>
             </div>
         </div>
+        @if(Auth::user()->id != $member->created_by)
         <div class="align-center" style="margin-top: 2%">
             <button onclick="location.href='{{ url('poste/askPoste', $member) }}'" >
                 Postuler</button>
         </div>
+        @endif
     </div>
 
 @endsection

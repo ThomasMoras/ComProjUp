@@ -2,6 +2,7 @@
 
 namespace projetPhp\Http\Controllers;
 
+use DB;
 
 use App\Http\Requests\StoreMessageRequest;
 use Carbon\Carbon;
@@ -63,8 +64,19 @@ class ConversationsController extends Controller
 
         $me = $this->auth->user();
 
-        $users = User::select('name', 'id')
-            ->where('id', '!=', $me->id)
+//        $users = User::select('name', 'id')
+////            ->where('id', '!=', $me->id)
+//            ->join('contacts', 'users.id', '=', 'contacts.ask_user')
+////            ->join('contacts', 'users.id', '=', 'contacts.receive_user')
+//            ->get();
+
+        $users = DB::table('users')
+            ->join('contacts', 'users.id', '=', 'contacts.ask_user')
+//            ->join('contacts', 'users.id', '=', 'contacts.receive_user')
+            ->select('users.*')
+            ->where('users.id', '!=', $me->id)
+            ->where('contacts.ask_user', '=', $me->id)
+            ->distinct()
             ->get();
 
         $messages = Message::whereRaw("((from_id = $me->id AND to_id = $user->id) OR (from_id = $user->id AND to_id = $me->id))")

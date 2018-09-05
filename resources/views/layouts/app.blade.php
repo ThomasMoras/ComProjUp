@@ -16,7 +16,7 @@
 
                 <ul>
                     @if(Auth::check())
-                        <li ><a href="{{ route('profil') }}">Profile</a></li>
+                        <li ><a href="{{ route('profil') }}">Profil</a></li>
                         <li ><a href="{{ route('search') }}">Recherche membres</a></li>
                         <li ><a href="{{ route('search-project') }}">Recherche projets</a></li>
                         <li ><a href="{{ route('conversations') }}">Conversation</a></li>
@@ -30,14 +30,14 @@
                             <li><a href="{{ route('notification_member')}}">
                                     <span class="glyphicon glyphicon-globe"></span>
                                     Demande de membre
-                                    <span class="badge">{{count(auth()->user()->unreadNotifications)}}</span>
+                                    <span class="badge">{{Auth::user()->unreadNotificationsTypeCount('projetPhp\Notifications\askPoste')}}</span>
                                 </a>
                             </li>
 
                             <li><a href="{{ route('notification')}}">
                                     <span class="glyphicon glyphicon-globe"></span>
                                     Demande de contact
-                                    <span class="badge">{{count(auth()->user()->unreadNotifications)}}</span>
+                                    <span class="badge">{{Auth::user()->unreadNotificationsTypeCount('projetPhp\Notifications\askContact')}}</span>
                                 </a>
                             </li>
 
